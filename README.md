@@ -1,6 +1,6 @@
-# Frontend Practice Lab
+# Frontend Kata
 
-![Tests](https://github.com/linzhangcs/frontend-practice-lab/actions/workflows/test.yml/badge.svg)
+![Tests](https://github.com/linzhangcs/frontend-kata/actions/workflows/test.yml/badge.svg)
 
 A daily frontend engineering practice repo focused on building technical fluency through tested coding exercises, implementation notes, and consistent iteration.
 ### Purpose

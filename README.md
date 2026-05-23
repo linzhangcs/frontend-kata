@@ -1,35 +1,25 @@
 # Frontend Practice Lab
 
-![Tests](https://github.com/YOUR_USERNAME/frontend-practice-lab/actions/workflows/test.yml/badge.svg)
+![Tests](https://github.com/linzhangcs/frontend-practice-lab/actions/workflows/test.yml/badge.svg)
 
 A daily frontend engineering practice repo focused on building technical fluency through tested coding exercises, implementation notes, and consistent iteration.
 ### Purpose
 
 This repo tracks my daily frontend engineering practice across:
 
-JavaScript fundamentals
-Data transformation
-Async control flow
-DOM and browser APIs
-React UI implementation
-Accessibility patterns
-Testing and debugging
-Frontend architecture notes
+- JavaScript fundamentals
+- Data transformation
+- Async control flow
+- React UI implementation
+- DOM and browser APIs
+- Accessibility patterns
+- Testing and debugging
 
 Each practice problem is meant to include:
 
-solution file
-test file
-notes file
-
-This creates proof of both implementation ability and learning process.
-
-Tech Stack
-Vite
-React
-Vitest
-Testing Library
-GitHub Actions
+- solution file
+- test file
+- notes file
 
 ## Getting Started
 
@@ -110,32 +100,6 @@ component-name/
   notes.md
 ```
 
-Each `notes.md` should include:
-
-```md
-# Problem Name
-
-## Task
-
-Brief description of the problem.
-
-## What I got right
-
--
-
-## What broke / confused me
-
--
-
-## Rule learned
-
--
-
-## Next rep
-
--
-```
-
 ---
 
 ## Testing Standard
@@ -184,43 +148,3 @@ commit receives pass/fail status
 ```
 
 A green check means the current practice code passes the test suite.
-
----
-
-## Weekly Review
-
-At the end of each week, create a review file:
-
-```txt
-weekly-reviews/week-01.md
-```
-
-Template:
-
-```md
-# Week 1 Review
-
-## Commits completed
-
--
-
-## Problems practiced
-
--
-
-## Strongest improvement
-
--
-
-## Repeated mistake
-
--
-
-## Pattern I understand better now
-
--
-
-## Next week's focus
-
--
-```

@@ -1,8 +1,12 @@
-import{beforeAll, describe, expect, it} from "vitest";
+import{vi, beforeAll, afterAll, describe, expect, it} from "vitest";
 import filter from "./solution.js";
 
 beforeAll(() => {
   Array.prototype.myFilter = filter;
+})
+
+afterAll(() => {
+  delete Array.prototype.myFilter;
 })
 
 describe("filter", () => {
@@ -15,6 +19,16 @@ describe("filter", () => {
   })
 
   it("Should pass item, index, and array to callback", () => {
+    const input = ['a', 'b', 'c'];
+    // spy callback
+    const callback = vi.fn(() => true);
+    input.myFilter(callback);
+
+    expect(callback).toHaveBeenCalledWith("a", 0, input);
+    expect(callback).toHaveBeenCalledWith("b", 1, input);
+    expect(callback).toHaveBeenCalledWith("c", 2, input);
+
+    expect(callback).toHaveBeenCalledTimes(3);
   })
 
   it("Should not mutate the original array", ()=>{

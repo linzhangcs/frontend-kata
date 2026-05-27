@@ -1,4 +1,4 @@
-import{vi, beforeAll, afterAll, describe, expect, it} from "vitest";
+import { vi, beforeAll, afterAll, describe, expect, it } from "vitest";
 import filter from "./solution.js";
 
 beforeAll(() => {
@@ -10,6 +10,12 @@ afterAll(() => {
 })
 
 describe("filter", () => {
+  it("Should return a new array", () => {
+    const input = ["hello", "world"];
+
+    expect(input.myFilter(item => item.length > 0)).not.toBe(input);
+  })
+
   it("Should return empty array when no matches", () => {
     expect([1, 3, 5, 7].myFilter(n => n % 2 === 0)).toEqual([]);
   })

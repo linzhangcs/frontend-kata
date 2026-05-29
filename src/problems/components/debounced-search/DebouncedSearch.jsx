@@ -4,14 +4,14 @@ import {fruits} from './data.js'
 
 const DebouncedSearch = () => {
   const [search, setSearch] = useState("");
-  const [result, setResult] = useState([]);
+  const [results, setResults] = useState([]);
 
   const debouncedUpdateResult = useMemo(() =>
-      debounce((searchTerm)=> setResult(searchData(searchTerm)), 300), []);
+      debounce((searchTerm)=> setResults(searchData(searchTerm)), 300), []);
 
   function searchData(searchTerm) {
     if(searchTerm.length === 0) return [];
-    return fruits.filter(fruit => fruit.includes(searchTerm.trim().toLowerCase()));
+    return fruits.filter(fruit => fruit.toLowerCase().includes(searchTerm.trim().toLowerCase()));
   }
 
   function handleSearchInput(e){
@@ -21,14 +21,15 @@ const DebouncedSearch = () => {
 
   return(
       <div>
-        <label for="debounced-search" />
+        <label htmlFor="debounced-search">Search Fruits</label>
+        <br/>
         <input
             id="debounced-search"
             placeholder="Search for fruits"
             type="text"
             value={search}
             onChange={handleSearchInput}></input>
-        <ul>{result.length > 0 && result.map((re, index) => <li key={re-index}>{re}</li>)}</ul>
+        <ul>{results.length > 0 && results.map((fruit, index) => <li key={`${fruit}-${index}`}>{fruit}</li>)}</ul>
       </div>
   );
 }

@@ -10,8 +10,10 @@ const DebouncedSearch = () => {
       debounce((searchTerm)=> setResults(searchData(searchTerm)), 300), []);
 
   function searchData(searchTerm) {
-    if(searchTerm.length === 0) return [];
-    return fruits.filter(fruit => fruit.toLowerCase().includes(searchTerm.trim().toLowerCase()));
+    const normalizedSearchTerm = searchTerm.trim().toLowerCase();
+
+    if(normalizedSearchTerm.length === 0) return [];
+    return fruits.filter(fruit => fruit.toLowerCase().includes(normalizedSearchTerm));
   }
 
   function handleSearchInput(e){

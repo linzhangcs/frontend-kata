@@ -1,5 +1,6 @@
 import { useState, useMemo} from "react";
-import debounce from "../../async/rate-limiting/debounce/solution.js"
+import debounce from "../../async/rate-limiting/debounce/solution.js";
+
 import {fruits} from './data.js'
 
 // Helper function that doesn't depend on changing component state, move out of the component so it's not recreated on every render.
@@ -34,12 +35,14 @@ const DebouncedSearch = () => {
       <div>
         <label htmlFor="debounced-search">Search Fruits</label>
         <br/>
+        <p>Raw search term: {search}</p>
+
         <input
             id="debounced-search"
             placeholder="Search for fruits"
             type="text"
             value={search}
-            onChange={handleSearchInput}></input>
+            onChange={handleSearchInput}/>
         <ul>{results.length > 0 && results.map((fruit, index) => <li key={`${fruit}-${index}`}>{fruit}</li>)}</ul>
       </div>
   );

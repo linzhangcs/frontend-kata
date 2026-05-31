@@ -4,6 +4,7 @@ import viteLogo from './assets/vite.svg'
 import heroImg from './assets/hero.png'
 import './App.css'
 import DebouncedSearch from "./problems/components/debounced-search/DebouncedSearch.jsx";
+import UseMemoExample from "./drills/api-usage/react-hooks/useMemo/examples.jsx";
 
 function App() {
 
@@ -13,6 +14,9 @@ function App() {
         <div className="hero">
           <DebouncedSearch />
         </div>
+      </section>
+      <section>
+        <UseMemoExample />
       </section>
       <section id="spacer"></section>
     </>

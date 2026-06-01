@@ -5,10 +5,26 @@
  */
 export default function debounce(func, wait) {
   let timerId = null;
-  return function (...args) {
+
+  const debounced = (...args) => {
+    const context = this;
+
     if(timerId !== null){
       clearTimeout(timerId);
+      timerId = null;
     }
-    timerId = setTimeout(() => func.apply(this, args), wait);
+    timerId = setTimeout(() => {
+      func.apply(context, args);
+      timerId = null;
+    }, wait);
+  };
+
+  debounced.cancel = function(){
+    if(timerId === null) return;
+
+    clearTimeout(timerId);
+    timerId = null;
   }
+
+  return debounced;
 }

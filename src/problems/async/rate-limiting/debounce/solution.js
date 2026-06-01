@@ -6,7 +6,9 @@
 export default function debounce(func, wait) {
   let timerId = null;
 
-  const debounced = (...args) => {
+  //return a normal function so to have the `this` context from how debounced is called
+  function debounced(...args){
+    //bind context because this is the function that is called.
     const context = this;
 
     if(timerId !== null){

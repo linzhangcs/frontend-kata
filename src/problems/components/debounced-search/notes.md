@@ -75,3 +75,8 @@ To prevent stale results from being displayed, we must cancel the pending deboun
 4. ‼️What would break if `debouncedSearch` was recreated every render?
     if `debouncedSearch` is recreated every render, the debounced behavior breaks because each instance has its own timer memory. Older scheduled searches may not be canceled, so they can still run and update the result state.  
 From the user's perspective, the search feature can look broken because stale results may appear.
+
+5. Rules on using normal function vs arrow function  
+
+    Need dynamic this from call site? Use normal function.
+   Do not care about this? Arrow function is fine.

@@ -33,7 +33,7 @@ const DebouncedSearch = () => {
       return;
     }
 
-    debouncedUpdateResult(e.target.value);
+    debouncedUpdateResult(nextSearchTerm);
   }
 
   return(

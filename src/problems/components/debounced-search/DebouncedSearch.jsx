@@ -5,15 +5,22 @@ import {searchFruits} from "./searchFruits.js";
 const DebouncedSearch = () => {
   const [search, setSearch] = useState("");
   const [results, setResults] = useState([]);
+  const [error, setError] = useState(null);
   const [loading, setLoading] = useState(false);
 
   const debouncedUpdateResult = useMemo(() =>
       debounce(async (searchTerm)=> {
         setLoading(true);
-        const result = await searchFruits(searchTerm);
-        console.log(searchTerm, result);
-        setResults(result);
+        try{
+          const result = await searchFruits(searchTerm);
+          console.log(searchTerm, result);
+          setResults(result);
+        }catch(e){
+          setError(e);
+          setResults([]);
+        }finally{
         setLoading(false);
+        }
       }, 500), []);
 
   function handleSearchInput(e){
@@ -21,8 +28,8 @@ const DebouncedSearch = () => {
     setSearch(nextSearchTerm);
 
     if(nextSearchTerm.trim().length === 0){
+      debouncedUpdateResult.cancel?.();
       setResults([]);
-      //TODO: cancel debounced is needed
       return;
     }
 
@@ -34,6 +41,7 @@ const DebouncedSearch = () => {
         <label htmlFor="debounced-search">Search Fruits</label>
         <br/>
         <p>Raw search term: {search}</p>
+        {loading && <p>Loading...</p>}
 
         <input
             id="debounced-search"
@@ -41,8 +49,14 @@ const DebouncedSearch = () => {
             type="text"
             value={search}
             onChange={handleSearchInput}
-            disabled = {loading} />
-        <ul>{results.length > 0 && results.map((fruit, index) => <li key={`${fruit}-${index}`}>{fruit}</li>)}</ul>
+        />
+
+        <div>
+          {!loading && search.trim().length > 0 && results.length === 0 && (
+              <p>No fruits found :(((</p>
+          )}
+          <ul>{!loading && results.length > 0 && results.map((fruit, index) => <li key={`${fruit}-${index}`}>{fruit}</li>)}</ul>
+        </div>
       </div>
   );
 }

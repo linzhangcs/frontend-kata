@@ -15,13 +15,21 @@ export default function useQuery(fn, deps = []) {
   });
 
   useEffect(() => {
-    setRequest({status: 'loading'});
-
-    fn().then((data) => {
+    let isStale = false;
+    Promise.resolve().then(() => {
+      if (isStale) return;
+      setRequest({status: 'loading'});
+      return fn();
+    }).then((data) => {
+      if (isStale) return;
       setRequest({status: 'success', data});
     }).catch((error) => {
+      if (isStale) return;
       setRequest({status: 'error', error});
     })
-  }, [...deps]);
+    return()=>{
+      isStale = true;
+    }
+  }, deps);
   return request;
 }

@@ -1,9 +1,9 @@
-import {describe, expect, it} from "vitest";
+import {describe, expect, it, vi} from "vitest";
 import {renderHook, waitFor} from "@testing-library/react";
 import useQuery from "./useQuery";
 
 describe("useQuery", () => {
-  it('Should return loading initially, then success', async () => {
+  it("Should return loading initially, then success", async () => {
     const callback = () => Promise.resolve(['hello', 'world']);
 
     const { result } = renderHook(() => useQuery(callback, []));
@@ -11,4 +11,24 @@ describe("useQuery", () => {
 
     await waitFor(() => expect(result.current).toEqual({status: 'loading'}));
   })
+
+  it("Should return loading initially, then rejection", async() => {
+    const error = new Error("Request failed");
+    const callback = () => Promise.reject(error);
+
+    const {result} = renderHook(() => useQuery(callback, []));
+    expect(result.current).toEqual({status: 'loading'});
+
+    await waitFor(() => expect(result.current).toEqual({status: 'error', error}));
+  })
+
+  it("Should call the query function", async() => {
+    const callback = vi.fn(() => Promise.resolve("data"));
+
+    renderHook(() => useQuery(callback, []));
+    await waitFor(() => {
+     expect(callback).toHaveBeenCalledTimes(1);
+    })
+  })
+
 })

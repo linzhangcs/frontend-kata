@@ -31,4 +31,23 @@ describe("useQuery", () => {
     })
   })
 
+  it("Should rerun the query function after dep change", async() => {
+    const callback = vi.fn((id) => Promise.resolve(`data for user ${id}`));
+
+    const {result, rerender} = renderHook(({id}) => useQuery(() => callback(id), [id]), {
+      initialProps: {id: 1}
+    });
+
+    await waitFor(() => {
+      expect(result.current).toEqual({status: "success", data: "data for user 1"});
+    })
+
+    // update the dep
+    rerender({id: 2});
+
+    await waitFor(() => {
+      expect(result.current).toEqual({status: "success", data: "data for user 2"});
+    })
+
+  })
 })

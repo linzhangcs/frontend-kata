@@ -1,5 +1,16 @@
 ### What is useQuery
 `useQuery` is a custom React hook pattern for fetching data and tracking the request state.
+`useQuery` receives a function, not a promise. The function returns a promise and can close over values from the current render, like id.  
+
+![useQuery.png](../../../../assets/problems/components/useQuery.png)
+
+When `id` changes:
+1. React rerenders the useQuery hook
+2. A new query function is created.
+3. The deps array changes from [1] to [2]
+4. useEffect is reruns
+5. useQuery calls the new function.
+6. The function calls callback(2)
 
 It answers three questions for the component:
 

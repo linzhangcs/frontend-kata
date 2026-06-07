@@ -49,5 +49,8 @@ describe("useQuery", () => {
       expect(result.current).toEqual({status: "success", data: "data for user 2"});
     })
 
+    expect(callback).toHaveBeenCalledTimes(2);
+    expect(callback).toHaveBeenNthCalledWith(1, 1)
+    expect(callback).toHaveBeenNthCalledWith(2, 2)
   })
 })

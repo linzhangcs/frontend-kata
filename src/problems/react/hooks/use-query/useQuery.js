@@ -10,7 +10,7 @@
 
 import {useState, useEffect} from 'react';
 export default function useQuery(fn, deps = []) {
-  const [request, setRequest] = useState({
+  const [requestStatus, setRequestStatus] = useState({
     status: 'loading',
   });
 
@@ -18,18 +18,18 @@ export default function useQuery(fn, deps = []) {
     let isStale = false;
     Promise.resolve().then(() => {
       if (isStale) return;
-      setRequest({status: 'loading'});
+      setRequestStatus({status: 'loading'});
       return fn();
     }).then((data) => {
       if (isStale) return;
-      setRequest({status: 'success', data});
+      setRequestStatus({status: 'success', data});
     }).catch((error) => {
       if (isStale) return;
-      setRequest({status: 'error', error});
+      setRequestStatus({status: 'error', error});
     })
     return()=>{
       isStale = true;
     }
   }, deps);
-  return request;
+  return requestStatus;
 }

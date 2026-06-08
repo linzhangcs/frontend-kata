@@ -5,12 +5,13 @@
 ![useQuery.png](../../../../assets/problems/components/useQuery.png)
 
 When `id` changes:
-1. React rerenders the useQuery hook
-2. A new query function is created.
+1. React re-renders the component that calls `useQuery` hook
+2. A new query function is created. `() => callback(id)`
 3. The deps array changes from [1] to [2]
-4. useEffect is reruns
-5. useQuery calls the new function.
-6. The function calls callback(2)
+4. `useQuery` immediately returns the current request state for the render.
+5. useEffect runs because the deps change. 
+6. Inside `useEffect`, `useQuery` calls the new function. `fn()`
+7. callback(2) returns a Promise
 
 It answers three questions for the component:
 

@@ -11,14 +11,14 @@ function App() {
 
   return (
     <>
-      <section id="center">
-        <div className="hero">
-          <DebouncedSearch />
-        </div>
-      </section>
-      <section>
-        <UseMemoExample />
-      </section>
+      {/*<section id="center">*/}
+      {/*  <div className="hero">*/}
+      {/*    <DebouncedSearch />*/}
+      {/*  </div>*/}
+      {/*</section>*/}
+      {/*<section>*/}
+      {/*  <UseMemoExample />*/}
+      {/*</section>*/}
       <section>
         <RenderSequence />
       </section>

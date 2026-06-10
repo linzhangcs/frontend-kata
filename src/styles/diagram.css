@@ -1,0 +1,39 @@
+.diagram-node {
+    min-width: 160px;
+    padding: 16px 28px;
+    border: 1px solid var(--artifact-border);
+    border-radius: var(--artifact-radius-md);
+    background: var(--artifact-surface-soft);
+    font-family: var(--artifact-font-mono);
+    font-size: 20px;
+    line-height: 1;
+    text-align: center;
+    color: var(--artifact-text-muted);
+}
+
+.diagram-node--active {
+    border-color: var(--artifact-active-border);
+    background: var(--artifact-active-bg);
+    color: var(--artifact-text);
+    box-shadow: var(--artifact-shadow-focus);
+}
+
+.diagram-node--muted {
+    opacity: 0.35;
+}
+
+.diagram-node--decision {
+    transform: skewX(-10deg);
+}
+
+.diagram-node--decision > * {
+    transform: skewX(10deg);
+}
+
+.diagram-arrow {
+    font-family: var(--artifact-font-mono);
+    font-size: 30px;
+    line-height: 1;
+    color: var(--artifact-text-muted);
+    text-align: center;
+}

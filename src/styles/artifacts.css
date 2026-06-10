@@ -1,0 +1,68 @@
+.artifact-frame {
+    overflow: hidden;
+    border: 1px solid var(--artifact-border);
+    border-radius: var(--artifact-radius-lg);
+    background: var(--artifact-surface);
+    color: var(--artifact-text);
+}
+
+.artifact-frame__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 22px 30px;
+    border-bottom: 1px solid var(--artifact-border);
+}
+
+.artifact-frame__body {
+    min-height: 620px;
+    padding: 48px;
+    background: var(--artifact-bg);
+}
+
+.artifact-frame__footer {
+    border-top: 1px solid var(--artifact-border);
+    padding: 28px 30px;
+    background: var(--artifact-surface-soft);
+}
+
+.diagram-node {
+    min-width: 160px;
+    padding: 16px 28px;
+    border: 1px solid var(--artifact-border);
+    border-radius: var(--artifact-radius-md);
+    background: var(--artifact-surface-soft);
+    font-family: var(--artifact-font-mono);
+    font-size: 20px;
+    text-align: center;
+    color: var(--artifact-text-muted);
+}
+
+.diagram-node--active {
+    border-color: var(--artifact-active-border);
+    background: var(--artifact-active-bg);
+    color: var(--artifact-text);
+    box-shadow: 0 0 0 4px rgba(0, 0, 0, 0.08);
+}
+
+.diagram-arrow {
+    font-family: var(--artifact-font-mono);
+    font-size: 30px;
+    color: var(--artifact-text-muted);
+    text-align: center;
+}
+
+.artifact-explanation__meta {
+    margin-bottom: 10px;
+    font-family: var(--artifact-font-mono);
+    font-size: 18px;
+    color: var(--artifact-text-muted);
+}
+
+.artifact-explanation p {
+    margin: 0;
+    font-family: var(--artifact-font-sans);
+    font-size: 22px;
+    line-height: 1.5;
+    color: var(--artifact-text);
+}

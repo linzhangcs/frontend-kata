@@ -74,5 +74,46 @@ space-8 to space-12: page and section spacing
 
 #### naming-convention
 1. size-related token sets, using numerical suffixes with increments of 1
-2. tokens that needs more gradularity in the future, like color scales. The numerical suffixes with increments of 10 / 100
+2. tokens that needs more granularity in the future, like color scales. The numerical suffixes with increments of 10 / 100
 
+### Component patterns
+- focus on developer experience (DX)
+- cohesive design/design language
+
+#### variant driven components
+a variant driven component is a component that has a set of predefined visual differences. 
+```js
+<Button variant="primary" size="md" />
+<Button variant="secondary" size="sm" />
+<Button variant="ghost" size="lg" />
+```
+
+instead of this:
+```js
+<Button background="blue" color="white" padding="12px 16px" />
+<Button background="hotpink" color="white" padding="8px 12px" />
+<Button border="1px solid red" fontSize="13px" />
+```
+
+Dynamic styling props = users can pass almost anything
+variant driven = design system defines the allowed choices
+
+API is product decision, not just a css decision
+```js
+<Button
+  variant="primary | secondary | ghost | danger"
+  size="sm | md | lg"
+  tone="neutral | brand | destructive"
+/>
+```
+components should expose a small, intentional API of visual choices, instead of letting every usage invent its own styling
+
+#### lessons
+1. predefined states beat random styling props
+2. variants create type-safe component APIs ``` variant="primary | secondary | ghost | danger" ```
+3. variants force you to think in system: has a small number of meaningful axes
+   Button:
+   - variant: primary, secondary, ghost, danger
+   - size: sm, md, lg
+   - loading: true, false
+   - disabled: native disabled

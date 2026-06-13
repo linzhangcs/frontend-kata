@@ -117,3 +117,19 @@ components should expose a small, intentional API of visual choices, instead of 
    - size: sm, md, lg
    - loading: true, false
    - disabled: native disabled
+
+
+#### utility components
+- Box
+- Flex
+- Grid
+- Text
+- VisuallyHidden
+
+#### compound components
+Two use cases to opt for compound components:
+1. Overloaded prop interface, split into smaller related components
+2. Components could potentially be composed in many ways
+
+ - Radio
+ - Card

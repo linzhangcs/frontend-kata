@@ -133,3 +133,59 @@ Two use cases to opt for compound components:
 
  - Radio
  - Card
+
+#### polymorphism and composition
+Polymorphism gives components rendering flexibility.
+Composition gives the system reusable layers of abstraction.
+
+Polymorphism = "what does this component render as"
+```js
+<Text as="p">Hello</Text>
+<Text as="h1">Hello</Text>
+<Card.Body as={Flex} direction="column" gap="2" />
+```
+
+Composition = "how do we build bigger/narrower components by combining smaller primitives?"
+Design pattern of wrapping/reusing primitives to create more specific components.
+
+```js
+const Heading = (props) => (
+  <Text
+    as="h1"
+    size={headingSize[props.size]}
+    css={...}
+  />
+);
+```
+
+#### mental model 
+```text
+Primitive:
+Text
+
+Polymorphic use:
+Text can render as p, h1, span, label, etc.
+
+Composed abstraction:
+Heading uses Text internally but gives it heading-specific defaults.
+
+Narrow composed abstraction:
+H1 uses Heading internally and fixes as="h1" and size="4".
+```
+
+In this example: 
+```js
+<Card.Body as={Flex} direction="column" gap="2" />
+```
+
+polymorphism and composition are both happending:
+- polymorphism is rendering the `Card.Body` as `Flex`
+- composition is `Card.Body` reuse `Flex` behavior
+
+#### tradeoff: 
+
+```text
+Too much polymorphism = flexible but easier to misuse.
+Good composition = fewer props, clearer intent, faster usage.
+Too much composition = too many tiny components and unclear hierarchy.
+```

@@ -189,3 +189,31 @@ Too much polymorphism = flexible but easier to misuse.
 Good composition = fewer props, clearer intent, faster usage.
 Too much composition = too many tiny components and unclear hierarchy.
 ```
+
+
+#### make it shine
+
+- the favicon next to the anchor links
+- the slight border around cards makes them stand out
+- programmatic and layered shadow system
+- micro-interactions - icon animations  
+- ![micro-interactions.png](../assets/notes/micro-interactions.png)
+
+#### packaging and shipping
+- packing patterns
+- file structure
+- bundling and releasing
+
+#### versioning
+one packaging for the design system 
+   - tradeoff:
+   - pro: simplicity - one package to import and use the design system
+   - con: tree shakable so importing one component of the design system would not result in a big increase in bundle size   
+
+additional reading: [Design system versioning](https://bradfrost.com/blog/post/design-system-versioning-single-library-or-individual-components/)  
+
+#### versioning decisions:  
+
+`major` bump when significant a design language change occurs or when a breaking change in the code is shipped.
+`minor` bump when a new component or new tokens are added to the design system.
+`patch` bump when some existing components/tokens are updated or when a fix is shipped.

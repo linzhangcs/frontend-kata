@@ -199,7 +199,7 @@ Too much composition = too many tiny components and unclear hierarchy.
 - micro-interactions - icon animations  
 - ![micro-interactions.png](../assets/notes/micro-interactions.png)
 
-#### packaging and shipping
+### packaging and shipping
 - packing patterns
 - file structure
 - bundling and releasing
@@ -216,4 +216,36 @@ additional reading: [Design system versioning](https://bradfrost.com/blog/post/d
 
 `major` bump when significant a design language change occurs or when a breaking change in the code is shipped.
 `minor` bump when a new component or new tokens are added to the design system.
-`patch` bump when some existing components/tokens are updated or when a fix is shipped.
+`patch` bump when some existing components/tokens are updated or when a fix is shipped.  
+
+#### file structure
+Based on this blog entry: [react file structure](https://www.joshwcomeau.com/react/file-structure/)
+
+#### bundling 
+- esbuild
+
+How do I turn my source files into files other apps can import?
+
+source files looks like
+```text
+src/Button.tsx
+src/Card.tsx
+src/Text.tsx
+src/index.ts
+```
+
+consumers need something like
+```text
+dist/index.mjs      ESM
+dist/index.cjs      CommonJS
+dist/index.d.ts     TypeScript types
+```
+
+Jobs of bundlers:
+1. Convert TypeScript/TSX to JavaScript
+2. Convert JSX to JS
+3. Combine files or preserve module structure
+4. Remove unused code where possible
+5. Minify output if desired
+6. Mark React as external so you do not bundle React into your package
+7. Output ESM/CJS/UMD depending on who consumes it

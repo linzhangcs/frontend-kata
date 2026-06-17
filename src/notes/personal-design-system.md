@@ -249,3 +249,19 @@ Jobs of bundlers:
 5. Minify output if desired
 6. Mark React as external so you do not bundle React into your package
 7. Output ESM/CJS/UMD depending on who consumes it
+
+look into vite library mode  for building a reusable package:
+`src/index.ts -> dist/my-design-system.js`
+[Vite doc](https://vite.dev/guide/build)
+[intro to Vite](https://scrimba.com/intro-to-vite-c03p6pbbdq/~037q)
+
+
+#### releasing
+
+used in the design system - [repo dispatch event](https://docs.github.com/en/actions/reference/workflows-and-actions/events-that-trigger-workflows#repository_dispatch)
+
+alternative process:
+- CI process
+- storybook to publish and compare different versions of the design system components
+- automatic release process using libraries like semantic release
+

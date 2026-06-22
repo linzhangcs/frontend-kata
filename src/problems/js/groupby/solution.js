@@ -8,9 +8,7 @@ export default function groupBy(array, iteratee) {
 
   array.forEach(item => {
     const key = iteratee(item);
-    if(result[key] === undefined) {
-      result[key] = [];
-    }
+    result[key] ??= [];
     result[key].push(item);
   })
 
